@@ -15,10 +15,6 @@ Vue.component('card', {
 
 })
 
-
-
-
-
 new Vue({
 el: '#app',
 data: {
