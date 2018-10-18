@@ -17,17 +17,17 @@ Vue.component('card', {
 
     methods: {
         deleteArticle() {
-            console.log('Article is deleted')
+            this.$emit(`delete-article`, this.title)
         }
     }
 
 
-})
+});
 
 new Vue({
 el: '#app',
 data: {
-    artciles:[{
+    articles:[{
         title: 'What is Vue.js?',
         content:'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable.'
     },{
@@ -37,6 +37,11 @@ data: {
         title: 'Declarative Rendering',
         content:'At the core of Vue.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:'
     }]
+    },
+    methods: {
+        removeArticle(event){
+        this.articles = this.articles.filter(article => article.title !== event)
+        }
     }
 
-})
+});
