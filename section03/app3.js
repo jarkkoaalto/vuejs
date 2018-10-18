@@ -1,6 +1,14 @@
 Vue.component('card', {
 
     props: ['title','content'],
+
+    data() {
+        return {
+            claps: 0
+        }
+    },
+
+
     template: `
     <div class="card">
          <div class="card-body">
@@ -8,6 +16,8 @@ Vue.component('card', {
         <div class="card-text">
             {{ content }}    
         </div>
+        <div class="text-center text-muted display-4"> {{ claps }}</div>
+        <button @click="clapforArticle" class="btn btn-info btn-sm">Clap for me</button>
 
         <button @click="deleteArticle" class="btn btn-danger btn-sm"> Delete Me</button>
         </div>
@@ -18,6 +28,10 @@ Vue.component('card', {
     methods: {
         deleteArticle() {
             this.$emit(`delete-article`, this.title)
+        },
+
+        clapforArticle() {
+            this.claps++
         }
     }
 
@@ -38,6 +52,8 @@ data: {
         content:'At the core of Vue.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:'
     }]
     },
+
+  
     methods: {
         removeArticle(event){
         this.articles = this.articles.filter(article => article.title !== event)
