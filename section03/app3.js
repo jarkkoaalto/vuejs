@@ -4,13 +4,22 @@ Vue.component('card', {
     template: `
     <div class="card">
          <div class="card-body">
-            <h3 class="card-title>"> {{ title }}</h3>
+            <h3 class="card-title"> {{ title }}</h3>
         <div class="card-text">
             {{ content }}    
         </div>
+
+        <button @click="deleteArticle" class="btn btn-danger btn-sm"> Delete Me</button>
         </div>
     </div>
     `
+    ,
+
+    methods: {
+        deleteArticle() {
+            console.log('Article is deleted')
+        }
+    }
 
 
 })
